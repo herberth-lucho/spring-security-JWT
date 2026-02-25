@@ -14,10 +14,10 @@ import java.util.List;
 import java.util.Set;
 
 @SpringBootApplication
-public class SpringSeecurityAppApplication {
+public class SpringSecurityAppApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringSeecurityAppApplication.class, args);
+        SpringApplication.run(SpringSecurityAppApplication.class, args);
     }
 
     @Bean
@@ -110,3 +110,22 @@ public class SpringSeecurityAppApplication {
         };
     }
 }
+
+//**
+// dbquery para ver roles asignados
+// USE securitydb;
+//
+//SELECT
+//    u.username, r.role_name, p.name AS permission_name
+//FROM
+//    users u
+//        INNER JOIN
+//    user_roles ur ON u.id = ur.user_id
+//        INNER JOIN
+//    roles r ON ur.role_id = r.id
+//        INNER JOIN
+//    role_permissions rp ON r.id = rp.role_id
+//        INNER JOIN
+//    permissions p ON rp.permission_id = p.id
+//LIMIT 0 , 1000
+// */
