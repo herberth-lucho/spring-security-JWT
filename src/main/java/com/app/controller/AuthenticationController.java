@@ -20,11 +20,30 @@ public class AuthenticationController {
     @Autowired
     private UserDetailServiceImpl userDetailService;
 
+    //**
+    // form signup
+    // {
+    //    "username": "roger",
+    //    "password": "1234",
+    //    "roleRequest": {
+    //        "roleListName": [
+    //            "INVITED", "ADMIN", "USER"
+    //        ]
+    //    }
+    //}
+    // */
     @PostMapping("/sign-up")
     public ResponseEntity<AuthResponse> register(@RequestBody @Valid AuthCreateUserRequest authCreateUserRequest) {
         return new ResponseEntity<>(this.userDetailService.createUser(authCreateUserRequest), HttpStatus.CREATED);
     }
 
+    //**
+    // form login
+    // {
+    //    "username": "alejandra",
+    //    "password": "1234"
+    //}
+    // */
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@RequestBody @Valid AuthLoginRequest userRequest) {
         return new ResponseEntity<>(this.userDetailService.loginUser(userRequest), HttpStatus.OK);
